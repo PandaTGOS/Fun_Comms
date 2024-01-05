@@ -3,16 +3,16 @@ import pickle as p
 from time import sleep 
 
 
-def write(filepath):
+def write():
     msg = input("Enter message: ")
-    with open(filepath, 'wb+') as fh:
+    with open('message', 'wb+') as fh:
         p.dump(msg, fh)
 
 
-def crack(filepath):
+def crack():
     all = ascii_letters + digits + ' ' + punctuation
 
-    with open(filepath, 'rb') as fh:
+    with open('message', 'rb') as fh:
         fh.seek(0)
         password = p.load(fh)
 
@@ -36,10 +36,8 @@ def crack(filepath):
 ch=int(input("1. Write\n2. Crack\n\nEnter choice: "))
 
 if ch==1:
-    filepath=input("Enter file path: ")
-    write(filepath)
+    write()
 elif ch==2:
-    filepath=input("Enter file path: ")
-    crack(filepath)
+    crack()
 else:
     exit()
